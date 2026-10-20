@@ -391,4 +391,158 @@ const generatePublicUI = () => `
                 <span style="background: var(--peach); color: var(--coral); padding: 6px 16px; border-radius: 20px; font-weight: 700; font-size: 0.875rem; margin-bottom: 16px; display: inline-block;">Your Heart, Our Priority</span>
                 <h1>A Healthier Heart Starts With the Right Care.</h1>
                 <p>Personalized cardiac consultations, preventive screening, and comprehensive heart-health management by leading specialists.</p>
+                <div style="di// --- GLOBAL ERROR HANDLER ---
+app.use((err, req, res, next) => {
+    console.error(err);
+    res.status(500).json({ error: 'Internal Server Error' });
+});
+
+// --- PUBLIC UI GENERATOR ---
+const generatePublicUI = () => `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CardioCare | Premium Heart & Wellness Clinic</title>
+    <meta name="description" content="Book your cardiology appointment with Dr. Aarav Mehta at CardioCare Heart & Wellness Clinic in Pune.">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --coral: #FF6B6B; --coral-hover: #ff5252; --navy: #24324A;
+            --mint: #BDF3DE; --sky: #BDE5FF; --lavender: #DCCBFF;
+            --cream: #FFF8F0; --peach: #FFD6C9; --white: #FFFFFF;
+            --text: #344054; --text-light: #667085;
+            --clay-bg: #FFF8F0;
+            --clay-shadow: 8px 8px 16px rgba(189, 182, 175, 0.4), -8px -8px 16px rgba(255, 255, 255, 0.9);
+            --clay-inset: inset 2px 2px 5px rgba(255, 255, 255, 0.9), inset -2px -2px 5px rgba(0, 0, 0, 0.04);
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: var(--cream); color: var(--text); line-height: 1.6; overflow-x: hidden; }
+        h1, h2, h3, h4 { font-family: 'Manrope', sans-serif; color: var(--navy); }
+        
+        .clay-card {
+            background: var(--clay-bg); border-radius: 24px;
+            box-shadow: var(--clay-shadow), var(--clay-inset);
+            padding: 32px; border: 2px solid rgba(255,255,255,0.6);
+            transition: var(--transition);
+        }
+        .clay-card:hover { transform: translateY(-5px); }
+        
+        .clay-btn {
+            background: var(--coral); color: white; border: none; border-radius: 9999px;
+            padding: 14px 28px; font-size: 1rem; font-weight: 700; cursor: pointer;
+            box-shadow: 4px 4px 10px rgba(255, 107, 107, 0.3), -4px -4px 10px rgba(255, 255, 255, 0.8), inset 2px 2px 4px rgba(255, 255, 255, 0.3);
+            transition: var(--transition); display: inline-flex; align-items: center; gap: 8px; text-decoration: none;
+        }
+        .clay-btn:hover { background: var(--coral-hover); transform: scale(1.02); }
+        .clay-btn:active { box-shadow: inset 4px 4px 8px rgba(0,0,0,0.1), inset -4px -4px 8px rgba(255,255,255,0.4); transform: scale(0.98); }
+        .clay-btn.secondary { background: var(--sky); color: var(--navy); box-shadow: 4px 4px 10px rgba(189, 229, 255, 0.5), -4px -4px 10px rgba(255, 255, 255, 0.8); }
+
+        .clay-input {
+            width: 100%; padding: 14px 20px; border-radius: 16px; border: 2px solid transparent;
+            background: rgba(255, 255, 255, 0.5); font-family: inherit; font-size: 1rem;
+            box-shadow: inset 4px 4px 8px rgba(0,0,0,0.05), inset -4px -4px 8px rgba(255,255,255,0.8);
+            transition: var(--transition); color: var(--navy); margin-bottom: 16px;
+        }
+        .clay-input:focus { outline: none; border-color: var(--sky); background: var(--white); }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        
+        /* Navbar */
+        nav { position: sticky; top: 16px; z-index: 100; margin: 0 24px; }
+        .nav-inner { 
+            background: rgba(255, 248, 240, 0.85); backdrop-filter: blur(12px); border-radius: 9999px;
+            display: flex; justify-content: space-between; align-items: center; padding: 12px 24px;
+            box-shadow: var(--clay-shadow); border: 1px solid rgba(255,255,255,0.5);
+        }
+        .logo { font-family: 'Manrope', sans-serif; font-weight: 800; font-size: 1.5rem; color: var(--coral); display: flex; align-items: center; gap: 8px; text-decoration: none;}
+        .nav-links { display: flex; gap: 24px; list-style: none; }
+        .nav-links a { text-decoration: none; color: var(--navy); font-weight: 600; transition: var(--transition); }
+        .nav-links a:hover { color: var(--coral); }
+        
+        /* Hero */
+        .hero { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; padding: 80px 0; position: relative; }
+        .hero h1 { font-size: 3.5rem; line-height: 1.2; margin-bottom: 24px; }
+        .hero p { font-size: 1.125rem; color: var(--text-light); margin-bottom: 32px; }
+        .hero-img-box { position: relative; border-radius: 40px; overflow: hidden; box-shadow: var(--clay-shadow); border: 4px solid var(--white); aspect-ratio: 4/5;}
+        .hero-img-box img { width: 100%; height: 100%; object-fit: cover; }
+        .floating-badge { position: absolute; background: rgba(255,255,255,0.9); backdrop-filter: blur(8px); padding: 16px; border-radius: 20px; box-shadow: var(--clay-shadow); display: flex; align-items: center; gap: 12px; animation: float 4s ease-in-out infinite; }
+        .badge-1 { bottom: 40px; left: -30px; }
+        .badge-2 { top: 40px; right: -30px; animation-delay: 1s; }
+
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+
+        /* Sections */
+        section { padding: 80px 0; }
+        .section-header { text-align: center; margin-bottom: 48px; }
+        .section-header h2 { font-size: 2.5rem; margin-bottom: 16px; }
+        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px; }
+        
+        /* Services */
+        .service-card { text-align: center; }
+        .icon-box { width: 64px; height: 64px; background: var(--lavender); border-radius: 20px; display: flex; align-items: center; justify-content: center; margin: 0 auto 24px; box-shadow: var(--clay-inset); color: var(--navy); }
+        
+        /* Booking Form */
+        #booking-section { background: linear-gradient(135deg, rgba(189,243,222,0.3) 0%, rgba(220,203,255,0.3) 100%); border-radius: 40px; padding: 64px 32px; }
+        .booking-container { max-width: 800px; margin: 0 auto; }
+        .step { display: none; animation: fadeIn 0.5s ease; }
+        .step.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        
+        .radio-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px; }
+        .radio-card { background: var(--white); border-radius: 16px; padding: 16px; text-align: center; cursor: pointer; border: 2px solid transparent; box-shadow: var(--clay-shadow); transition: var(--transition); }
+        .radio-card.selected { border-color: var(--coral); background: var(--peach); box-shadow: inset 2px 2px 5px rgba(0,0,0,0.05); }
+        
+        .slot-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 12px; margin-top: 24px; }
+        .slot { background: var(--white); padding: 12px; border-radius: 12px; text-align: center; cursor: pointer; font-weight: 600; transition: var(--transition); box-shadow: var(--clay-shadow); }
+        .slot:hover { transform: translateY(-2px); }
+        .slot.selected { background: var(--coral); color: white; }
+        
+        .progress { display: flex; justify-content: space-between; margin-bottom: 32px; position: relative; }
+        .progress::before { content: ''; position: absolute; top: 50%; left: 0; right: 0; height: 4px; background: var(--white); z-index: 0; border-radius: 2px; }
+        .dot { width: 32px; height: 32px; border-radius: 50%; background: var(--white); display: flex; align-items: center; justify-content: center; font-weight: bold; z-index: 1; box-shadow: var(--clay-shadow); color: var(--text-light); transition: var(--transition); }
+        .dot.active { background: var(--coral); color: white; }
+
+        /* Footer */
+        footer { background: var(--navy); color: var(--white); padding: 64px 0 24px; border-top-left-radius: 40px; border-top-right-radius: 40px; }
+        footer a { color: var(--sky); text-decoration: none; }
+        
+        /* Mobile */
+        @media(max-width: 768px) {
+            .hero { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 2.5rem; }
+            .nav-links { display: none; }
+            .floating-badge { display: none; }
+            .radio-grid { grid-template-columns: 1fr; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            * { animation: none !important; transition: none !important; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-inner">
+            <a href="#" class="logo"><i data-lucide="heart-pulse"></i> CardioCare</a>
+            <ul class="nav-links">
+                <li><a href="#about">About Doctor</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#health">Heart Health</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <a href="#booking-section" class="clay-btn" style="padding: 10px 20px; font-size: 0.9rem;">Book Now</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <header class="hero">
+            <div>
+                <span style="background: var(--peach); color: var(--coral); padding: 6px 16px; border-radius: 20px; font-weight: 700; font-size: 0.875rem; margin-bottom: 16px; display: inline-block;">Your Heart, Our Priority</span>
+                <h1>A Healthier Heart Starts With the Right Care.</h1>
+                <p>Personalized cardiac consultations, preventive screening, and comprehensive heart-health management by leading specialists.</p>
                 <div style="di
